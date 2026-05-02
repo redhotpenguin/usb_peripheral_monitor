@@ -30,7 +30,7 @@ struct ContentView: View {
         switch selection {
         case .allDevices:         return "All Devices"
         case .recentlyConnected:  return "Recently Connected"
-        case .highSpeed:          return "High-Speed Devices"
+        case .highSpeed:          return "Super Speed Devices"
         default:                  return ""
         }
     }

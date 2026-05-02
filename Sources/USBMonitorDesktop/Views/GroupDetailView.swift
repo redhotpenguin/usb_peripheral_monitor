@@ -54,8 +54,10 @@ struct GroupDetailView: View {
                     TableColumn("Class", value: \.deviceClass.rawValue)
                         .width(min: 80, ideal: 100)
 
-                    TableColumn("Speed", value: \.speed.rawValue)
-                        .width(min: 80, ideal: 110)
+                    TableColumn("Speed") { device in
+                        Text(device.speed.displayLabel)
+                    }
+                    .width(min: 140, ideal: 180)
 
                     TableColumn("Vendor ID") { device in
                         Text(device.vendorIDHex)

@@ -87,7 +87,10 @@
 - [x] Wire selectedDevice changes → DetailController.loadEvents() + InspectorController.observe()
 - [x] Wire Export toolbar button → ExportSheet; wire Preferences button → PreferencesWindow
 
-## Phase 15: Testing & Polish
+## Phase 15: UI Polish
+- [x] Display speed as "Tier - Bandwidth" (e.g. "SuperSpeed - 5 Gbps") everywhere speed is shown; rename "High-Speed" smart group to "Super Speed"
+
+## Phase 17: Testing & Polish
 - [ ] Test IOKit watcher callbacks fire on real USB attach/detach
 - [ ] Verify PDVDO decoding with USB-C cables of known specs
 - [ ] Test DB persistence and query with 1000+ events

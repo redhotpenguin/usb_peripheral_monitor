@@ -25,7 +25,7 @@ struct SidebarView: View {
                 .tag(SidebarSelection.recentlyConnected)
 
                 SmartGroupRow(
-                    title: "High-Speed",
+                    title: "Super Speed",
                     icon: "bolt",
                     count: sidebarController.highSpeedDevices.count
                 )
@@ -77,7 +77,7 @@ private struct DeviceRow: View {
                 Text(device.displayName)
                     .font(.body)
                     .lineLimit(1)
-                Text(device.speed.rawValue)
+                Text(device.speed.displayLabel)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

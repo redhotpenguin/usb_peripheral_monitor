@@ -23,6 +23,19 @@ public enum USBSpeed: String, Codable, CaseIterable, Comparable, Sendable {
         }
     }
 
+    public var displayLabel: String {
+        switch self {
+        case .lowSpeed:      return "Low Speed - 1.5 Mbps"
+        case .fullSpeed:     return "Full Speed - 12 Mbps"
+        case .highSpeed:     return "High Speed - 480 Mbps"
+        case .superSpeed:    return "SuperSpeed - 5 Gbps"
+        case .superSpeedPlus: return "SuperSpeed+ - 10 Gbps"
+        case .usb4Gen2:      return "USB4 Gen 2 - 20 Gbps"
+        case .usb4Gen3:      return "USB4 Gen 3 - 40 Gbps"
+        case .unknown:       return "Unknown"
+        }
+    }
+
     public var shortLabel: String {
         switch self {
         case .lowSpeed: return "LS"

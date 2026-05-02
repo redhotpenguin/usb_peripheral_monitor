@@ -40,7 +40,7 @@ struct QuickInfoSection: View {
             Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 6) {
                 InfoRow(label: "Vendor ID", value: device.vendorIDHex)
                 InfoRow(label: "Product ID", value: device.productIDHex)
-                InfoRow(label: "Speed", value: device.speed.rawValue)
+                InfoRow(label: "Speed", value: device.speed.displayLabel)
                 InfoRow(label: "Location", value: device.locationIDHex)
                 if let serial = device.serialNumber {
                     InfoRow(label: "Serial", value: serial)

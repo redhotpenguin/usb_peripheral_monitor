@@ -64,6 +64,9 @@ final class AppState: ObservableObject {
         powerWatcher.start()
         usbcWatcher.start()
         subscribeToBus()
+        // Initial devices were emitted before the bus subscription was wired;
+        // force a refresh so displayDevices (and smart group filters) are populated.
+        sidebarController.refresh(devices: deviceWatcher.devices)
     }
 
     private func subscribeToBus() {

@@ -22,7 +22,7 @@ struct DeviceCardView: View {
 
                     HStack(spacing: 8) {
                         Badge(text: device.deviceClass.rawValue, color: .blue)
-                        Badge(text: device.speed.rawValue, color: speedBadgeColor)
+                        Badge(text: device.speed.displayLabel, color: speedBadgeColor)
                         if let vendor = device.vendorName {
                             Badge(text: vendor, color: .secondary)
                         }
