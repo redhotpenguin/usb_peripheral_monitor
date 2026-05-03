@@ -50,7 +50,7 @@ public final class SidebarController: ObservableObject {
         return displayDevices.filter { $0.connectedAt >= cutoff }
     }
 
-    public var highSpeedDevices: [USBDevice] {
-        displayDevices.filter { $0.speed >= .superSpeed }
+    public func devices(at speed: USBSpeed) -> [USBDevice] {
+        displayDevices.filter { $0.speed == speed }
     }
 }

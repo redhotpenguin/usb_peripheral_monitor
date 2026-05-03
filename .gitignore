@@ -1,0 +1,30 @@
+# Swift Package Manager
+.build/
+.swiftpm/
+*.o
+*.d
+*.swp
+
+# Xcode
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.pbxuser
+
+# Build artifacts
+*.app/
+*.dmg
+*.pkg
+*.ipa
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Claude Code
+.claude/

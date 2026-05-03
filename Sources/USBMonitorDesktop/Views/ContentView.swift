@@ -21,7 +21,7 @@ struct ContentView: View {
         switch selection {
         case .allDevices:         return deviceWatcher.devices
         case .recentlyConnected:  return sidebarController.recentlyConnected
-        case .highSpeed:          return sidebarController.highSpeedDevices
+        case .speed(let s):       return sidebarController.devices(at: s)
         default:                  return nil
         }
     }
@@ -30,7 +30,7 @@ struct ContentView: View {
         switch selection {
         case .allDevices:         return "All Devices"
         case .recentlyConnected:  return "Recently Connected"
-        case .highSpeed:          return "Super Speed Devices"
+        case .speed(let s):       return s.displayLabel
         default:                  return ""
         }
     }

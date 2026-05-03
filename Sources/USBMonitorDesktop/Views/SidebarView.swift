@@ -6,9 +6,14 @@ struct SidebarView: View {
     @EnvironmentObject var deviceWatcher: USBDeviceWatcher
     @Binding var selection: SidebarSelection?
 
+    // Highest speed at top, lowest at bottom
+    private let speedTiers: [USBSpeed] = [
+        .usb4Gen3, .usb4Gen2, .superSpeedPlus, .superSpeed,
+        .highSpeed, .fullSpeed, .lowSpeed
+    ]
+
     var body: some View {
         List(selection: $selection) {
-            // Smart groups
             Section("Smart Groups") {
                 SmartGroupRow(
                     title: "All Devices",
@@ -24,15 +29,16 @@ struct SidebarView: View {
                 )
                 .tag(SidebarSelection.recentlyConnected)
 
-                SmartGroupRow(
-                    title: "Super Speed",
-                    icon: "bolt",
-                    count: sidebarController.highSpeedDevices.count
-                )
-                .tag(SidebarSelection.highSpeed)
+                ForEach(speedTiers, id: \.self) { tier in
+                    SmartGroupRow(
+                        title: tier.rawValue,
+                        icon: speedIcon(for: tier),
+                        count: sidebarController.devices(at: tier).count
+                    )
+                    .tag(SidebarSelection.speed(tier))
+                }
             }
 
-            // Device class sections
             ForEach(sidebarController.sections) { section in
                 Section(section.title) {
                     ForEach(section.devices) { device in
@@ -44,6 +50,19 @@ struct SidebarView: View {
         }
         .listStyle(.sidebar)
         .navigationTitle("USB Monitor")
+    }
+
+    private func speedIcon(for speed: USBSpeed) -> String {
+        switch speed {
+        case .usb4Gen3:       return "bolt.fill"
+        case .usb4Gen2:       return "bolt"
+        case .superSpeedPlus: return "arrow.up.forward.circle.fill"
+        case .superSpeed:     return "arrow.up.forward.circle"
+        case .highSpeed:      return "hare"
+        case .fullSpeed:      return "figure.walk"
+        case .lowSpeed:       return "tortoise"
+        case .unknown:        return "questionmark.circle"
+        }
     }
 }
 
